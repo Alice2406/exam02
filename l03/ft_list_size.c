@@ -1,46 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   epur_str.c                                         :+:      :+:    :+:   */
+/*   ft_list_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aniezgod <aniezgod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/06 14:02:21 by aniezgod          #+#    #+#             */
-/*   Updated: 2023/01/11 18:38:46 by aniezgod         ###   ########.fr       */
+/*   Created: 2023/01/11 17:21:00 by aniezgod          #+#    #+#             */
+/*   Updated: 2023/01/11 17:25:20 by aniezgod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+/*
+Dans le .h
 
-int	is_space_tab(char c)
+typedef struct    s_list
 {
-	if (c == ' ' || c == '\t')
-		return (1);
-	return (0);
-}
+    struct s_list *next;
+    void          *data;
+}    
+*/
 
-int main(int ac, char **av)
+#include "ft_list_size.h"
+
+int	ft_list_size(t_list *begin_list)
 {
 	int i = 0;
-	int space;
 
-	if (ac == 2)
+	while(begin_list)
 	{
-		while (is_space_tab(av[1][i]))
-			i++;
-		while (av[1][i])
-		{
-			if (is_space_tab(av[1][i]))
-				space = 1;
-			if (!is_space_tab(av[1][i]))
-			{
-				if (space)
-					write(1, " ", 1); 
-				space = 0;
-				write(1, &av[1][i], 1);
-			}
-			i++;
-		}
+		i++;
+		begin_list = begin_list->next;
 	}
-	write(1, "\n", 1);
+	return (i);
 }
