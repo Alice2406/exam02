@@ -1,43 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lcm.c                                              :+:      :+:    :+:   */
+/*   pgcd.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aniezgod <aniezgod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 18:06:50 by aniezgod          #+#    #+#             */
-/*   Updated: 2023/01/12 13:23:53 by aniezgod         ###   ########.fr       */
+/*   Created: 2023/01/12 15:14:40 by aniezgod          #+#    #+#             */
+/*   Updated: 2023/01/12 15:39:38 by aniezgod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int min(unsigned int a, unsigned int b)
-{
-	if (a < b)
-		return (a);
-	return (b);
-}
+#include <stdio.h>
+#include <stdlib.h>
 
-int max (unsigned int a, unsigned int b)
+int	pgcd(int a, int b)
 {
-	if (a > b)
-		return (a);
-	return (b);
+	if (a % b == 0)
+		return(b);
+	return (pgcd(b, a % b));
 }
-
-unsigned int	lcm(unsigned int a, unsigned int b)
+ 
+int main(int ac, char **av)
 {
-	int nb;
-	int i = 1;
-	int lcm;
-	
-	if (a == 0 || b == 0)
-		return (0);
-	nb = max(a, b);
-	lcm = nb * i;
-	while (lcm % min(a, b) != 0)
+	int min;
+	int max;
+
+	if (ac == 3)
 	{
-		i++;
-		lcm = nb * i;
+		min = atoi(av[2]);
+		max = atoi(av[1]);
+		if (atoi(av[1]) < atoi(av[2]))
+		{
+			min = atoi(av[1]);
+			max = atoi(av[2]);
+		}
+		printf("%d\n", pgcd(max, min));
 	}
-	return (lcm);
+	else
+		printf("\n");
 }

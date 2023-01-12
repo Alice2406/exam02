@@ -6,7 +6,7 @@
 /*   By: aniezgod <aniezgod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 14:51:34 by aniezgod          #+#    #+#             */
-/*   Updated: 2022/12/30 15:00:50 by aniezgod         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:51:20 by aniezgod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_atoi(const char *str)
 			compteur = -1;
 		i++;
 	}
-	while(str[i] >= '1' && str[i] <= '9' && str[i])
+	while(str[i] >= '0' && str[i] <= '9' && str[i])
 	{
 		nb = nb * 10 + str[i] - '0';
 		i++;

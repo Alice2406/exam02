@@ -1,43 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lcm.c                                              :+:      :+:    :+:   */
+/*   tab_mult.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aniezgod <aniezgod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 18:06:50 by aniezgod          #+#    #+#             */
-/*   Updated: 2023/01/12 13:23:53 by aniezgod         ###   ########.fr       */
+/*   Created: 2023/01/12 15:59:07 by aniezgod          #+#    #+#             */
+/*   Updated: 2023/01/12 17:47:58 by aniezgod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int min(unsigned int a, unsigned int b)
-{
-	if (a < b)
-		return (a);
-	return (b);
-}
+#include <unistd.h>
 
-int max (unsigned int a, unsigned int b)
+int main(int ac, char **av)
 {
-	if (a > b)
-		return (a);
-	return (b);
-}
-
-unsigned int	lcm(unsigned int a, unsigned int b)
-{
-	int nb;
-	int i = 1;
-	int lcm;
-	
-	if (a == 0 || b == 0)
-		return (0);
-	nb = max(a, b);
-	lcm = nb * i;
-	while (lcm % min(a, b) != 0)
-	{
-		i++;
-		lcm = nb * i;
-	}
-	return (lcm);
+	if (ac == 2)
+		tab_mult(ft_atoi(av[1]));
+	write(1, "\n", 1);
 }

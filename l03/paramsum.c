@@ -1,43 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lcm.c                                              :+:      :+:    :+:   */
+/*   paramsum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aniezgod <aniezgod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 18:06:50 by aniezgod          #+#    #+#             */
-/*   Updated: 2023/01/12 13:23:53 by aniezgod         ###   ########.fr       */
+/*   Created: 2023/01/12 13:25:02 by aniezgod          #+#    #+#             */
+/*   Updated: 2023/01/12 13:27:32 by aniezgod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int min(unsigned int a, unsigned int b)
-{
-	if (a < b)
-		return (a);
-	return (b);
-}
+#include <unistd.h>
 
-int max (unsigned int a, unsigned int b)
+void	ft_putnbr(int nb)
 {
-	if (a > b)
-		return (a);
-	return (b);
-}
-
-unsigned int	lcm(unsigned int a, unsigned int b)
-{
-	int nb;
-	int i = 1;
-	int lcm;
+	char str[10] ="0123456789";
 	
-	if (a == 0 || b == 0)
-		return (0);
-	nb = max(a, b);
-	lcm = nb * i;
-	while (lcm % min(a, b) != 0)
-	{
-		i++;
-		lcm = nb * i;
-	}
-	return (lcm);
+	if (nb > 9)
+		ft_putnbr(nb / 10);
+	write(1, &str[nb % 10], 1);
+}
+
+int main(int ac, char **av)
+{
+	(void)av;
+	ft_putnbr(ac - 1);
+	write(1, "\n", 1);
 }
