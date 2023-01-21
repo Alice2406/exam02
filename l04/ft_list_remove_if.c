@@ -6,7 +6,7 @@
 /*   By: aniezgod <aniezgod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 14:26:21 by aniezgod          #+#    #+#             */
-/*   Updated: 2023/01/15 14:33:56 by aniezgod         ###   ########.fr       */
+/*   Updated: 2023/01/21 17:20:20 by aniezgod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 	t_list *lst = *begin_list;
 	if (cmp(lst->data, data_ref) == 0)
 	{
-		*begin_list = cur->next;
+		*begin_list = lst->next;
 		free(lst);
 		ft_list_remove_if(begin_list, data_ref, cmp);
 	}

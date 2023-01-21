@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   rev_wstr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aniezgod <aniezgod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 14:34:29 by aniezgod          #+#    #+#             */
-/*   Updated: 2023/01/21 16:18:45 by aniezgod         ###   ########.fr       */
+/*   Created: 2023/01/21 15:35:33 by aniezgod          #+#    #+#             */
+/*   Updated: 2023/01/21 16:49:14 by aniezgod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <unistd.h>
 
 int	is_space_tab(char c)
 {
@@ -100,18 +101,39 @@ char	**ft_split(char *s)
 	}
 }
 
-#include <stdio.h>
+void print_str(char *str)
+{
+	int i = 0;
+
+	while(str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
 
 int main(int ac, char **av)
 {
 	char **chaine;
-	int i = 0;
+	int i;
 
 	if (ac == 2)
 	{
+		i = nb_word(av[1]) - 1;
 		chaine = ft_split(av[1]);
-		while(chaine[i])
-			printf("%s\n", chaine[i++]);
+		while(i >= 0)
+		{
+			print_str(chaine[i]);
+			if (i != 0)
+				write(1, " ", 1);
+			i--;
+		}
+		i = 0;
+		while (chaine[i])
+		{
+			free(chaine[i]);
+			i++;
+		}
 	}
-	printf("\n");
+	write(1, "\n", 1);
 }
