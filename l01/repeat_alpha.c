@@ -6,7 +6,7 @@
 /*   By: aniezgod <aniezgod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 10:27:25 by aniezgod          #+#    #+#             */
-/*   Updated: 2022/12/30 11:04:22 by aniezgod         ###   ########.fr       */
+/*   Updated: 2023/01/27 12:25:46 by aniezgod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,21 @@
 
 int main(int ac, char **av)
 {
-	int i;
+	int i = 0;
 	int j;
 
-	i = 0;
 	if (ac == 2)
 	{
-		while (av[1][i] != '\0')
+		while (av[1][i])
 		{
 
 			if (av[1][i] >= 'a' && av[1][i] <= 'z')
-				j = av[1][i] - 96;
+				j = av[1][i] - 'a' + 1;
 			else if (av[1][i] >= 'A' && av[1][i] <= 'Z')
-				j = av[1][i] - 64;
+				j = av[1][i] - 'A' + 1;
 			else
 				j = 1;
-			while(j > 0)
+			while(j)
 			{
 				write(1, &av[1][i], 1);
 				j--;
