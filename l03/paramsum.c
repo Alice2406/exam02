@@ -6,7 +6,7 @@
 /*   By: aniezgod <aniezgod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:25:02 by aniezgod          #+#    #+#             */
-/*   Updated: 2023/01/12 13:27:32 by aniezgod         ###   ########.fr       */
+/*   Updated: 2023/01/30 17:13:23 by aniezgod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_putnbr(int nb)
 
 int main(int ac, char **av)
 {
-	(void)av;
-	ft_putnbr(ac - 1);
+	if (av[0])
+		ft_putnbr(ac - 1);
 	write(1, "\n", 1);
 }
