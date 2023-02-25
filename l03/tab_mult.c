@@ -6,7 +6,7 @@
 /*   By: aniezgod <aniezgod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:59:07 by aniezgod          #+#    #+#             */
-/*   Updated: 2023/01/13 12:19:25 by aniezgod         ###   ########.fr       */
+/*   Updated: 2023/02/22 12:07:11 by aniezgod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,15 @@ int	ft_atoi(char *str)
 {
 	int nb = 0;
 	int i = 0;
-	int sig = 1;
 
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+	if (str[i] == '+')
 		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			sig = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[1] <= '9')
+	while (str[i] >= '0' && str[1] <= '9' && str[i])
 	{
 		nb = nb * 10 + str[i] - '0';
 		i++;
 	}
-	return (nb * sig);
+	return (nb);
 }
 
 void	ft_putnbr(int nb)
@@ -51,8 +44,6 @@ int main(int ac, char **av)
 	if (ac == 2)
 	{
 		nb = ft_atoi(av[1]);
-		if (nb <= 0 || nb > 23860929)
-			return (0);
 		while (i < 10)
 		{
 			ft_putnbr(i);
@@ -64,5 +55,6 @@ int main(int ac, char **av)
 			i++;
 		}
 	}
-	write(1, "\n", 1);
+	else
+		write(1, "\n", 1);
 }
